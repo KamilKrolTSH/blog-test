@@ -1,0 +1,16 @@
+service: blog-post
+
+frameworkVersion: "2 || 3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - stream:
+          type: dynamodb
+          arn: ${cf:blog-post-stack.ExampleTableStreamArn}

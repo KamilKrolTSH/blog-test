@@ -1,0 +1,14 @@
+service: blog-post
+
+frameworkVersion: "2 || 3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - stream: arn:aws:dynamodb:eu-west-1:322464397044:table/example_table/stream/2021-11-28T12:40:04.788
